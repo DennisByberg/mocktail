@@ -1,0 +1,58 @@
+@import "../../sass/colors";
+
+.hamburger-menu {
+  user-select: none;
+  display: inline-block;
+  width: 43px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+
+  &__line {
+    // border: 1px solid black;
+    // this makes the hamburger black...
+    // border: 2px solid $purple;
+
+    box-shadow: 1px 1px 1px black;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(194, 194, 255);
+    position: absolute;
+    left: 0;
+    transition: all 0.1s ease-in-out;
+    border-radius: 10px;
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+
+  &--open {
+    .hamburger-menu__line {
+      &:first-child {
+        transform: rotate(45deg);
+        top: 45%;
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:last-child {
+        transform: rotate(-45deg);
+        bottom: 45%;
+      }
+    }
+  }
+}

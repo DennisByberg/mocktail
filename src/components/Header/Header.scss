@@ -1,0 +1,20 @@
+@import "../../sass/colors";
+@import "../../sass/fonts";
+
+header {
+  //   border: 2px solid red;
+  padding: 1.5rem 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h1 {
+    @include fontFamilyPoiretOne;
+    font-size: 35px;
+  }
+
+  img {
+    width: 50px;
+  }
+}
