@@ -1,3 +1,4 @@
+import Navigation from "../Navigation/Navigation";
 import "./Hamburger.scss";
 
 interface HamburgerProps {
@@ -11,14 +12,17 @@ function Hamburger({ isOpen, setIsOpen }: HamburgerProps) {
   }
 
   return (
-    <section
-      className={`hamburger-menu ${isOpen ? "hamburger-menu--open" : ""}`}
-      onClick={handleClick}
-    >
-      <span className="hamburger-menu__line"></span>
-      <span className="hamburger-menu__line"></span>
-      <span className="hamburger-menu__line"></span>
-    </section>
+    <div>
+      <section
+        className={`hamburger-menu ${isOpen ? "hamburger-menu--open" : ""}`}
+        onClick={handleClick}
+      >
+        <span className="hamburger-menu__line"></span>
+        <span className="hamburger-menu__line"></span>
+        <span className="hamburger-menu__line"></span>
+      </section>
+      <section>{isOpen ? <Navigation /> : ""}</section>
+    </div>
   );
 }
 

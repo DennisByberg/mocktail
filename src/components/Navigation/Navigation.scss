@@ -1,0 +1,27 @@
+@import "../../sass/colors";
+@import "../../sass/fonts";
+
+.navigation {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  &__links {
+    list-style-type: none;
+    border-right: none;
+    margin-top: 1rem;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.627);
+  }
+
+  &__link {
+    @include fontFamilyPoiretOne;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 2rem 5rem;
+
+    &:hover {
+      background-color: rgb(35, 35, 35);
+      cursor: pointer;
+    }
+  }
+}

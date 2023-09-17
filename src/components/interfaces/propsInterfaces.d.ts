@@ -1,0 +1,3 @@
+interface SearchDrinksProps {
+  searchInput: string;
+}

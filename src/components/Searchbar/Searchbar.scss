@@ -1,0 +1,31 @@
+.searchbar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  input {
+    width: 100%;
+    padding: 1.5rem 1rem;
+    color: white;
+    background-color: transparent;
+    border: 1px solid rgba(136, 29, 186, 0.539);
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(186, 37, 149, 0.711);
+    font-size: 1.2rem;
+
+    &::placeholder {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.106);
+    }
+  }
+
+  img {
+    position: absolute;
+    right: 20px;
+    width: 23px;
+    top: 25px;
+    filter: invert(1);
+    opacity: 0.2;
+  }
+}

@@ -1,0 +1,3 @@
+interface IDrinksApiResponse {
+  drinks: IDrinks[];
+}

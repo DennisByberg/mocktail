@@ -10,14 +10,10 @@
   transition: 0.1s ease-in-out;
 
   &:hover {
-    transform: scale(1.03);
+    transform: scale(1.1);
   }
 
   &__line {
-    // border: 1px solid black;
-    // this makes the hamburger black...
-    // border: 2px solid $purple;
-
     box-shadow: 1px 1px 1px black;
     display: block;
     width: 100%;

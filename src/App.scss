@@ -21,3 +21,20 @@ body {
 
   min-height: 100vh;
 }
+
+/* SCROLLBAR DESIGN! */
+body::-webkit-scrollbar {
+  width: 0.7rem;
+  background-color: $black;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px $black;
+  border-radius: 50px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $black;
+  outline: 1px solid rgba(255, 192, 203, 0.318);
+  border-radius: 50px;
+}
