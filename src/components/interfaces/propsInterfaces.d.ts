@@ -1,3 +1,0 @@
-interface SearchDrinksProps {
-  searchInput: string;
-}

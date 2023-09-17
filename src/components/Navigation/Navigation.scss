@@ -24,4 +24,9 @@
       cursor: pointer;
     }
   }
+  &__favorites-number {
+    font-family: Helvetica;
+    color: rgba(255, 255, 0, 0.903);
+    font-size: 1.3rem;
+  }
 }

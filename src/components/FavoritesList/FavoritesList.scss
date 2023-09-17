@@ -1,0 +1,87 @@
+@import "../../sass/fonts";
+@import "../../sass/colors";
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+
+  //error message...
+  h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: rgba(255, 56, 56, 0.423);
+  }
+
+  &__ul {
+    list-style-type: none;
+  }
+
+  &__card {
+    border: 3px solid rgb(0, 0, 0);
+    background-image: linear-gradient(to right, #000000a9 20%, #ff53cc 120%);
+    box-shadow: 5px 5px 5px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 1rem;
+    text-align: center;
+    max-width: 800px;
+    margin-inline: auto;
+    border-radius: 5px;
+  }
+
+  &__card-top-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__card-bottom-section {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 0.5rem;
+
+    input {
+      width: 30px;
+      height: 30px;
+      appearance: none;
+      background-color: transparent;
+      border: 1px solid #ccc;
+      padding: 3px;
+      cursor: pointer;
+      border-radius: 100px;
+    }
+
+    input:checked {
+      background-color: #27ae60; /* Change the background color when checked */
+      border: 1px solid #27ae60; /* Change the border color when checked */
+    }
+
+    label {
+      font-size: 20px;
+      font-style: italic;
+    }
+  }
+
+  &__card-drinkIMG {
+    width: 120px;
+    border-radius: 100px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.825);
+  }
+
+  &__card-name {
+    text-transform: uppercase;
+    @include fontFamilyPoiretOne;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    padding: 0 2rem;
+  }
+}

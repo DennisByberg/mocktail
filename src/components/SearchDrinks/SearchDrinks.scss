@@ -21,7 +21,7 @@
 
   &__card {
     border: 3px solid rgb(0, 0, 0);
-    background-color: rgb(17, 16, 16);
+    background-image: linear-gradient(to right, #000000a9 20%, #ff53cc 120%);
     box-shadow: 5px 5px 5px black;
     display: flex;
     align-items: center;
@@ -46,11 +46,11 @@
   &__card-drinkIMG {
     width: 120px;
     border-radius: 100px;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.825);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.825);
   }
 
   &__card-starPNG {
-    filter: invert(1);
+    // filter: invert(1);
     transition: 0.2s ease-in-out;
 
     &:hover {

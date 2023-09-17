@@ -14,8 +14,3 @@ function Searchbar({ setSearchInput }: SearchbarProps) {
   );
 }
 export default Searchbar;
-
-// INTERFACE
-interface SearchbarProps {
-  setSearchInput: React.Dispatch<React.SetStateAction<string>>;
-}
