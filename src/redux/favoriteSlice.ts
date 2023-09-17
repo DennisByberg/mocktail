@@ -17,9 +17,15 @@ const favoritesSlice = createSlice({
       saveToLocalStorage("favorites", filteredState);
       return filteredState;
     },
+    clearFavorites: (state) => {
+      state = []; // Set the state to an empty array
+      saveToLocalStorage("favorites", state);
+      return state;
+    },
   },
 });
 
-export const { addToFavorites, removeFromFavorites } = favoritesSlice.actions;
+export const { addToFavorites, removeFromFavorites, clearFavorites } =
+  favoritesSlice.actions;
 
 export default favoritesSlice.reducer;

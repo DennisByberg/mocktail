@@ -1,3 +1,5 @@
+@import "../../sass/colors";
+
 .searchbar {
   position: relative;
   display: flex;
@@ -6,7 +8,7 @@
   input {
     width: 100%;
     padding: 1.5rem 1rem;
-    color: white;
+    color: $white;
     background-color: transparent;
     border: 1px solid rgba(136, 29, 186, 0.539);
     outline: none;

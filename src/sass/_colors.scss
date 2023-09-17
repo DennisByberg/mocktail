@@ -1,9 +1,19 @@
 // Solid Colors.
-$black: black;
-$white: white;
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
 $darkGrey: rgb(20, 20, 20);
+$darkGrey2: rgb(35, 35, 35);
+$lightBlue: rgb(194, 194, 255);
+$emptyListRed: rgb(116, 42, 42);
+$lightGreen: rgb(50, 228, 50);
+$yellow: rgb(255, 255, 0);
 
 // Logo Colors.
 $pink: rgb(253, 42, 167);
 $purple: rgb(39, 64, 175);
 $darkPurple: rgb(0, 50, 120);
+
+// Transparent Colors.
+$whiteTransparent8: rgba(255, 255, 255, 0.8);
+
+$blackTransparent6: rgba(0, 0, 0, 0.6);

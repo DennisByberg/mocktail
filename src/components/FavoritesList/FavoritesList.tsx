@@ -5,15 +5,32 @@ import { useEffect, useState } from "react";
 import { getNonAlcoholicDrinks } from "../../hooks/getNonAlcoholicDrinks";
 import notFavoriteStarPNG from "../../images/not-favorite-star.png";
 import favoriteStarPNG from "../../images/favorite-star.png";
-import { addToFavorites, removeFromFavorites } from "../../redux/favoriteSlice";
+import {
+  addToFavorites,
+  clearFavorites,
+  removeFromFavorites,
+} from "../../redux/favoriteSlice";
 import { useDispatch } from "react-redux";
+import {
+  saveToLocalStorage,
+  loadFromLocalStorage,
+} from "../../helpers/localStorage";
 
 function FavoritesList() {
   const favorites = useSelector((state: RootState) => state.favorites);
-  console.log(favorites);
   const dispatch = useDispatch();
 
   const [filteredDrinks, setFilteredDrinks] = useState<IDrinks[]>([]);
+  const [completedDrinks, setCompletedDrinks] = useState<string[]>([]);
+
+  // Load completed drinks from local storage when the component initializes
+  useEffect(() => {
+    const storedCompletedDrinks =
+      loadFromLocalStorage<string[]>("completedDrinks");
+    if (storedCompletedDrinks) {
+      setCompletedDrinks(storedCompletedDrinks);
+    }
+  }, []);
 
   useEffect(() => {
     async function fetchNonAlcoholicDrinks() {
@@ -27,12 +44,47 @@ function FavoritesList() {
       );
 
       setFilteredDrinks(drinksInFavorites);
+
+      // Save completed drinks to local storage after the state has been updated
+      saveToLocalStorage("completedDrinks", completedDrinks);
     }
     fetchNonAlcoholicDrinks();
-  }, [favorites]);
+  }, [favorites, completedDrinks]);
+
+  // Function to handle checkbox change
+  const handleCheckboxChange = (drinkId: string) => {
+    if (completedDrinks.includes(drinkId)) {
+      setCompletedDrinks((prevCompletedDrinks) =>
+        prevCompletedDrinks.filter((id) => id !== drinkId)
+      );
+    } else {
+      setCompletedDrinks((prevCompletedDrinks) => [
+        ...prevCompletedDrinks,
+        drinkId,
+      ]);
+    }
+  };
+
+  function handleClearFavorites() {
+    dispatch(clearFavorites());
+    setFilteredDrinks([]);
+    setCompletedDrinks([]);
+    saveToLocalStorage("completedDrinks", []);
+  }
 
   return (
     <div className="favorites-list">
+      {filteredDrinks.length ? (
+        <button
+          onClick={handleClearFavorites}
+          className="favorites-list__clear-list-btn"
+        >
+          Clear Favorites
+        </button>
+      ) : (
+        ""
+      )}
+
       {filteredDrinks.length > 0 ? (
         <ul className="favorites-list__ul">
           {filteredDrinks.map((drink) => (
@@ -43,13 +95,19 @@ function FavoritesList() {
                   src={drink.strDrinkThumb}
                   alt={drink.strDrink}
                 />
-                <p className="favorites-list__card-name">{drink.strDrink}</p>
+                <p
+                  className={`favorites-list__card-name ${
+                    completedDrinks.includes(drink.idDrink) ? "completed" : ""
+                  }`}
+                >
+                  {drink.strDrink}
+                </p>
                 <img
-                  className="search-drinks__card-starPNG"
+                  className="favorites-list__card-starPNG"
                   src={
                     favorites.includes(drink.idDrink)
-                      ? favoriteStarPNG // If it's a favorite, use the favorite star image.
-                      : notFavoriteStarPNG // If it's not a favorite, use the not favorite star image.
+                      ? favoriteStarPNG
+                      : notFavoriteStarPNG
                   }
                   onClick={() => {
                     if (favorites.includes(drink.idDrink)) {
@@ -61,8 +119,15 @@ function FavoritesList() {
                 />
               </section>
               <section className="favorites-list__card-bottom-section">
-                <label htmlFor="completed-checkbox">Mark As Completed</label>
-                <input type="checkbox" id="completed-checkbox" />
+                <label htmlFor={`completed-checkbox-${drink.idDrink}`}>
+                  Mark As Completed
+                </label>
+                <input
+                  type="checkbox"
+                  id={`completed-checkbox-${drink.idDrink}`}
+                  checked={completedDrinks.includes(drink.idDrink)}
+                  onChange={() => handleCheckboxChange(drink.idDrink)}
+                />
               </section>
             </li>
           ))}

@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux";
 import "./Navigation.scss";
-
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../redux/store";
+
 function Navigation() {
   const favorites = useSelector((state: RootState) => state.favorites);
-  console.log(favorites);
   const navigate = useNavigate();
   return (
     <div className="navigation">
